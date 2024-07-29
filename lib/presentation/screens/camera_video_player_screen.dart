@@ -26,18 +26,18 @@ class _CameraVideoPlayerScreenState extends State<CameraVideoPlayerScreen> {
   void initState() {
     super.initState();
 
-    _initVlcController();
+    _initVideoController();
   }
 
   @override
   void didUpdateWidget(covariant CameraVideoPlayerScreen oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.cameraUrl != oldWidget.cameraUrl) {
-      _initVlcController();
+      _initVideoController();
     }
   }
 
-  Future<void> _initVlcController() async {
+  Future<void> _initVideoController() async {
     try {
       _player = null;
       _controller = null;
@@ -50,6 +50,7 @@ class _CameraVideoPlayerScreenState extends State<CameraVideoPlayerScreen> {
     } on Object catch (e) {
       _player = null;
       _controller = null;
+      _media = null;
       debugPrint('Player initialization error: $e');
     }
   }
